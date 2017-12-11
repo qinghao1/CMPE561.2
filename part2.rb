@@ -4,11 +4,11 @@ test_letters_map = {}
 test_lines = []
 #Read file
 File.open('corpus.txt','rb:UTF-16LE').each do |line|
-	if rand(10) == 0 
+	if rand(10) == 0 #Pick random lines for test set
 		test_lines.push line
 		next
 	end
-	language = line[-4..-1];
+	language = line[-4..-1]
 	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-16LE'))
 	line2 = line.gsub(letters_regex,'')
 	line2.each_char do |char|
