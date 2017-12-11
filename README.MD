@@ -1,4 +1,4 @@
-#Instructions
+# Instructions
 1. Add svm binaries to project folder (https://www.cs.cornell.edu/people/tj/svm_light/svm_multiclass.html)
 2. Run part2.rb in console i.e.
 
