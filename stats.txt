@@ -1,31 +1,31 @@
 Macro-averaged Precision, Recall, F-measure
-bg - TPi:197 FPi:0 FNi:0 TNi:1824
+bg - TPi:20 FPi:0 FNi:0 TNi:192
 bg - pi_i:1.00000 rho_i:1.00000 F_i:1.00000
-bs - TPi:37 FPi:20 FNi:159 TNi:1984
-bs - pi_i:0.64912 rho_i:0.18878 F_i:0.29249
-cz - TPi:203 FPi:6 FNi:2 TNi:1818
-cz - pi_i:0.97129 rho_i:0.99024 F_i:0.98068
-AR - TPi:161 FPi:9 FNi:14 TNi:1860
-AR - pi_i:0.94706 rho_i:0.92000 F_i:0.93333
-ES - TPi:185 FPi:9 FNi:4 TNi:1836
-ES - pi_i:0.95361 rho_i:0.97884 F_i:0.96606
-hr - TPi:193 FPi:296 FNi:7 TNi:1828
-hr - pi_i:0.39468 rho_i:0.96500 F_i:0.56023
-id - TPi:125 FPi:97 FNi:68 TNi:1896
-id - pi_i:0.56306 rho_i:0.64767 F_i:0.60241
-mk - TPi:195 FPi:3 FNi:0 TNi:1826
-mk - pi_i:0.98485 rho_i:1.00000 F_i:0.99237
-my - TPi:109 FPi:60 FNi:99 TNi:1912
-my - pi_i:0.64497 rho_i:0.52404 F_i:0.57825
-BR - TPi:211 FPi:29 FNi:0 TNi:1810
-BR - pi_i:0.87917 rho_i:1.00000 F_i:0.93570
-PT - TPi:195 FPi:8 FNi:6 TNi:1826
-PT - pi_i:0.96059 rho_i:0.97015 F_i:0.96535
-sk - TPi:192 FPi:5 FNi:12 TNi:1829
-sk - pi_i:0.97462 rho_i:0.94118 F_i:0.95761
-sr - TPi:18 FPi:3 FNi:174 TNi:2003
-sr - pi_i:0.85714 rho_i:0.09375 F_i:0.16901
-OVERALL - pi:0.82924 rho:0.78613 F:0.76411
+bs - TPi:10 FPi:11 FNi:10 TNi:202
+bs - pi_i:0.47619 rho_i:0.50000 F_i:0.48780
+cz - TPi:20 FPi:2 FNi:0 TNi:192
+cz - pi_i:0.90909 rho_i:1.00000 F_i:0.95238
+AR - TPi:19 FPi:2 FNi:1 TNi:193
+AR - pi_i:0.90476 rho_i:0.95000 F_i:0.92683
+ES - TPi:20 FPi:2 FNi:0 TNi:192
+ES - pi_i:0.90909 rho_i:1.00000 F_i:0.95238
+hr - TPi:10 FPi:2 FNi:10 TNi:202
+hr - pi_i:0.83333 rho_i:0.50000 F_i:0.62500
+id - TPi:13 FPi:8 FNi:7 TNi:199
+id - pi_i:0.61905 rho_i:0.65000 F_i:0.63415
+mk - TPi:20 FPi:0 FNi:0 TNi:192
+mk - pi_i:1.00000 rho_i:1.00000 F_i:1.00000
+my - TPi:11 FPi:5 FNi:9 TNi:201
+my - pi_i:0.68750 rho_i:0.55000 F_i:0.61111
+BR - TPi:20 FPi:4 FNi:0 TNi:192
+BR - pi_i:0.83333 rho_i:1.00000 F_i:0.90909
+PT - TPi:19 FPi:1 FNi:1 TNi:193
+PT - pi_i:0.95000 rho_i:0.95000 F_i:0.95000
+sk - TPi:18 FPi:0 FNi:2 TNi:194
+sk - pi_i:1.00000 rho_i:0.90000 F_i:0.94737
+sr - TPi:12 FPi:11 FNi:8 TNi:200
+sr - pi_i:0.52174 rho_i:0.60000 F_i:0.55814
+OVERALL - pi:0.81878 rho:0.81538 F:0.81187
 
 Micro-averaged Precision, Recall, F-measure
-OVERALL - pi: 0.78761 rho: 0.78761 F: 0.78761
+OVERALL - pi: 0.81538 rho: 0.81538 F: 0.81538

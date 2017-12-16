@@ -5,13 +5,9 @@ language_counter = 0
 test_letters_map = {}
 test_lines = []
 #Read file
-File.open('corpus.txt','rb:UTF-16LE').each do |line|
-	if rand(10) == 0 #Pick random lines for test set
-		test_lines.push(line)
-		next
-	end
+File.open('training_corpus.txt','rb:UTF-8').each do |line|
 	language = line[-4..-1]
-	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-16LE'))
+	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8')) #Only use alphabet characters
 	line2 = line.gsub(letters_regex,'')
 	if !language_id_map[language]
 		language_id_map[language] = (language_counter += 1)
@@ -37,16 +33,16 @@ end
 
 #Write test using stored test_lines
 File.open('test.txt', 'w') do |file|
-	test_lines.each do |line|
-	language = line[-4..-1];
-	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-16LE'))
-	line2 = line.gsub(letters_regex,'')
-	language_id = language_id_map[language];
-	test_letters_map[language_id] ||= [];
-	test_letters_map[language_id].push(SortedSet.new)
-	line2.each_char do |char|
-		test_letters_map[language_id].last.add(char.ord)
-	end
+	File.open('test_corpus.txt','rb:UTF-8').each do |line|
+		language = line[-4..-1];
+		letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8'))
+		line2 = line.gsub(letters_regex,'')
+		language_id = language_id_map[language];
+		test_letters_map[language_id] ||= [];
+		test_letters_map[language_id].push(SortedSet.new)
+		line2.each_char do |char|
+			test_letters_map[language_id].last.add(char.ord)
+		end
 	end
 	test_letters_map.each do |language_id, sentence_array|
 		sentence_array.each do |character_set|
@@ -58,7 +54,7 @@ File.open('test.txt', 'w') do |file|
 end
 
 #Run SVM
-C_VALUE = 10.0
+C_VALUE = ARGV[0] || 10.0
 puts `./svm_multiclass_learn -c #{C_VALUE} training.txt learned_svm`
 puts `./svm_multiclass_classify test.txt learned_svm output.txt`
 
@@ -124,8 +120,6 @@ File.open('stats.txt', 'w') do |f|
 
 	f.puts
 	f.puts "Micro-averaged Precision, Recall, F-measure"
-	puts statistics[:total][:FP]
-	puts statistics[:total][:FN]
 	pi = statistics[:total][:TP].to_f / (statistics[:total][:TP] + statistics[:total][:FP])
 	rho = statistics[:total][:TP].to_f / (statistics[:total][:TP] + statistics[:total][:FN])
 	big_f = (2 * pi * rho) / (pi + rho)
