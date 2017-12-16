@@ -102,7 +102,7 @@ File.open('stats.txt', 'w') do |f|
 				break
 			end
 		end
-		f.puts "#{language_str} - TPi:#{stats[:TP]} FPi:#{stats[:FP]} FNi:#{stats[:FN]} TNi:#{stats[:TN]}"
+		f.puts "#{language_str} - TP_i:#{stats[:TP]} FP_i:#{stats[:FP]} FN_i:#{stats[:FN]} TN_i:#{stats[:TN]}"
 		pi_i = stats[:TP].to_f / (stats[:TP] + stats[:FP])
 		rho_i = stats[:TP].to_f / (stats[:TP] + stats[:FN])
 		f_i = (2 * pi_i * rho_i) / (pi_i + rho_i)
