@@ -1,9 +1,8 @@
 require 'set'
 language_id_map = {}
 training_letters_map = {}
-language_counter = 0
 test_letters_map = {}
-test_lines = []
+language_counter = 0
 #Read file
 File.open('training_corpus.txt','rb:UTF-8').each do |line|
 	language = line[-4..-1]
