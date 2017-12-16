@@ -1,13 +1,31 @@
-bg- TP:183 FP:7 FN:2 TN:1152
-bs- TP:91 FP:141 FN:139 TN:1244
-cz- TP:175 FP:47 FN:13 TN:1160
-AR- TP:135 FP:424 FN:67 TN:1200
-ES- TP:143 FP:163 FN:62 TN:1192
-hr- TP:0 FP:0 FN:207 TN:1335
-id- TP:24 FP:12 FN:190 TN:1311
-mk- TP:183 FP:3 FN:3 TN:1152
-my- TP:80 FP:59 FN:115 TN:1255
-BR- TP:0 FP:0 FN:196 TN:1335
-PT- TP:209 FP:419 FN:1 TN:1126
-sk- TP:112 FP:17 FN:86 TN:1223
-sr- TP:0 FP:0 FN:211 TN:1335
+Macro-averaged Precision, Recall, F-measure
+bg - TPi:197 FPi:0 FNi:0 TNi:1824
+bg - pi_i:1.00000 rho_i:1.00000 F_i:1.00000
+bs - TPi:37 FPi:20 FNi:159 TNi:1984
+bs - pi_i:0.64912 rho_i:0.18878 F_i:0.29249
+cz - TPi:203 FPi:6 FNi:2 TNi:1818
+cz - pi_i:0.97129 rho_i:0.99024 F_i:0.98068
+AR - TPi:161 FPi:9 FNi:14 TNi:1860
+AR - pi_i:0.94706 rho_i:0.92000 F_i:0.93333
+ES - TPi:185 FPi:9 FNi:4 TNi:1836
+ES - pi_i:0.95361 rho_i:0.97884 F_i:0.96606
+hr - TPi:193 FPi:296 FNi:7 TNi:1828
+hr - pi_i:0.39468 rho_i:0.96500 F_i:0.56023
+id - TPi:125 FPi:97 FNi:68 TNi:1896
+id - pi_i:0.56306 rho_i:0.64767 F_i:0.60241
+mk - TPi:195 FPi:3 FNi:0 TNi:1826
+mk - pi_i:0.98485 rho_i:1.00000 F_i:0.99237
+my - TPi:109 FPi:60 FNi:99 TNi:1912
+my - pi_i:0.64497 rho_i:0.52404 F_i:0.57825
+BR - TPi:211 FPi:29 FNi:0 TNi:1810
+BR - pi_i:0.87917 rho_i:1.00000 F_i:0.93570
+PT - TPi:195 FPi:8 FNi:6 TNi:1826
+PT - pi_i:0.96059 rho_i:0.97015 F_i:0.96535
+sk - TPi:192 FPi:5 FNi:12 TNi:1829
+sk - pi_i:0.97462 rho_i:0.94118 F_i:0.95761
+sr - TPi:18 FPi:3 FNi:174 TNi:2003
+sr - pi_i:0.85714 rho_i:0.09375 F_i:0.16901
+OVERALL - pi:0.82924 rho:0.78613 F:0.76411
+
+Micro-averaged Precision, Recall, F-measure
+OVERALL - pi: 0.78761 rho: 0.78761 F: 0.78761
