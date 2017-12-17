@@ -3,7 +3,9 @@ language_id_map = {}
 training_letters_map = {}
 test_letters_map = {}
 language_counter = 0
-#Read file
+
+#Read training
+puts "Reading training..."
 File.open('training_corpus.txt','rb:UTF-8').each do |line|
 	language = line[-4..-1]
 	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8')) #Only use alphabet characters
@@ -20,6 +22,7 @@ File.open('training_corpus.txt','rb:UTF-8').each do |line|
 end
 
 #Write training
+puts "Writing training..."
 File.open('training.txt', 'w') do |file|
 	training_letters_map.each do |language_id, sentence_array|
 		sentence_array.each do |character_set|
@@ -30,19 +33,23 @@ File.open('training.txt', 'w') do |file|
 	end
 end
 
-#Write test using stored test_lines
-File.open('test.txt', 'w') do |file|
-	File.open('test_corpus.txt','rb:UTF-8').each do |line|
-		language = line[-4..-1];
-		letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8'))
-		line2 = line.gsub(letters_regex,'')
-		language_id = language_id_map[language];
-		test_letters_map[language_id] ||= [];
-		test_letters_map[language_id].push(SortedSet.new)
-		line2.each_char do |char|
-			test_letters_map[language_id].last.add(char.ord)
-		end
+#Read test
+puts "Reading test..."
+File.open('test_corpus.txt','rb:UTF-8').each do |line|
+	language = line[-4..-1];
+	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8'))
+	line2 = line.gsub(letters_regex,'')
+	language_id = language_id_map[language];
+	test_letters_map[language_id] ||= [];
+	test_letters_map[language_id].push(SortedSet.new)
+	line2.each_char do |char|
+		test_letters_map[language_id].last.add(char.ord)
 	end
+end
+
+#Write test
+puts "Writing test..."
+File.open('test.txt', 'w') do |file|
 	test_letters_map.each do |language_id, sentence_array|
 		sentence_array.each do |character_set|
 			file.write "#{language_id} "
@@ -53,11 +60,13 @@ File.open('test.txt', 'w') do |file|
 end
 
 #Run SVM
+puts "Running SVM..."
 C_VALUE = ARGV[0] || 10.0
 puts `./svm_multiclass_learn -c #{C_VALUE} training.txt learned_svm`
 puts `./svm_multiclass_classify test.txt learned_svm output.txt`
 
 #Read test and output files to get statistics
+puts "Running statistics..."
 statistics = {total: {TP:0, FP:0, FN:0, TN:0}}
 language_id_map.values.each do |id|
 	statistics[id] = {
@@ -90,6 +99,8 @@ test_file.each.zip(output_file.each).each do |test_line, output_line|
 end
 test_file.close and output_file.close
 
+#Write stats to file
+puts "Writing statistics..."
 File.open('stats.txt', 'w') do |f|
 	pi = rho = big_f = 0
 	f.puts "Macro-averaged Precision, Recall, F-measure"
