@@ -6,7 +6,7 @@ language_counter = 0
 
 #Read training
 puts "Reading training..."
-File.open('training_corpus.txt','rb:UTF-8').each do |line|
+File.open('training.txt','rb:UTF-8').each do |line|
 	language = line[-4..-1]
 	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8')) #Only use alphabet characters
 	line2 = line.gsub(letters_regex,'')
@@ -23,7 +23,7 @@ end
 
 #Write training
 puts "Writing training..."
-File.open('training.txt', 'w') do |file|
+File.open('training_output.txt', 'w') do |file|
 	training_letters_map.each do |language_id, sentence_array|
 		sentence_array.each do |character_set|
 			file.write "#{language_id} "
@@ -35,7 +35,7 @@ end
 
 #Read test
 puts "Reading test..."
-File.open('test_corpus.txt','rb:UTF-8').each do |line|
+File.open('test.txt','rb:UTF-8').each do |line|
 	language = line[-4..-1];
 	letters_regex = Regexp.new('^[[:alpha:]]'.encode('UTF-8'))
 	line2 = line.gsub(letters_regex,'')
@@ -49,7 +49,7 @@ end
 
 #Write test
 puts "Writing test..."
-File.open('test.txt', 'w') do |file|
+File.open('test_output.txt', 'w') do |file|
 	test_letters_map.each do |language_id, sentence_array|
 		sentence_array.each do |character_set|
 			file.write "#{language_id} "
@@ -62,8 +62,8 @@ end
 #Run SVM
 puts "Running SVM..."
 C_VALUE = ARGV[0] || 10.0
-puts `./svm_multiclass_learn -c #{C_VALUE} training.txt learned_svm`
-puts `./svm_multiclass_classify test.txt learned_svm output.txt`
+puts `./svm_multiclass_learn -c #{C_VALUE} training_output.txt learned_svm`
+puts `./svm_multiclass_classify test_output.txt learned_svm output.txt`
 
 #Read test and output files to get statistics
 puts "Running statistics..."
@@ -76,7 +76,7 @@ language_id_map.values.each do |id|
 		TN: 0
 	}
 end
-test_file = File.open('test.txt', 'r')
+test_file = File.open('test_output.txt', 'r')
 output_file = File.open('output.txt', 'r')
 test_file.each.zip(output_file.each).each do |test_line, output_line|
 	test_id = test_line.split.first.to_i
